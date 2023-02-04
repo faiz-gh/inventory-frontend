@@ -1,0 +1,22 @@
+{
+  "name": "inventory-frontend",
+  "version": "1.0.0",
+  "description": "Inventory Management Application Backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faiz-gh/inventory-frontend.git"
+  },
+  "author": "Faiz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faiz-gh/inventory-frontend/issues"
+  },
+  "homepage": "https://github.com/faiz-gh/inventory-frontend#readme",
+  "dependencies": {
+    "firebase": "^9.17.1"
+  }
+}
