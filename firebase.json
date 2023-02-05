@@ -3,7 +3,6 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "site": "monkeinventory",
     "public": ".",
     "ignore": [
       "firebase.json",
