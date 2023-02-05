@@ -1,11 +1,11 @@
 {
   "name": "inventory-frontend",
   "version": "1.0.0",
-  "description": "Inventory Management Application Backend",
-  "main": "index.js",
-  "type": "module",
+  "description": "Inventory Management Application",
+  "main": "main.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "test",
+    "build": "webpack-cli"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,10 @@
     "url": "https://github.com/faiz-gh/inventory-frontend/issues"
   },
   "homepage": "https://github.com/faiz-gh/inventory-frontend#readme",
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
   "dependencies": {
     "firebase": "^9.17.1"
   }

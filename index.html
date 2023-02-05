@@ -17,8 +17,7 @@
 </head>
 
 <body>
-	<script src="/__/firebase/8.10.1/firebase-app.js"></script>
-	<script src="/__/firebase/init.js"></script>
+
 	<!--*******************
         Preloader start
     ********************-->
@@ -118,12 +117,12 @@
 					</div>
 
 					<div class="input-group search-area ml-auto d-inline-flex">
-						<form id="imageUploadForm">
-							<input id="imageInput" type="file" accept=".jpg,.jpeg,.png,.pdf" onchange="form.submit()"/>
+						<form method="post" action="http://43.205.216.220:4200/inventoryUpload" id="image-form" enctype="multipart/form-data">
+							<input id="image-file" name="bill" type="file" accept=".jpg,.jpeg,.png,.pdf" onchange="form.submit()"/>
 						</form>
 					</div>
 
-					<button type="button" class="btn btn-rounded btn-success" onclick="uploadButton()">
+					<button type="button" class="btn btn-rounded btn-success" onclick="document.getElementById('image-file').click()">
 						<span class="btn-icon-left text-success">
 							<i class="fa fa-upload color-success"></i>
 						</span>Upload
@@ -137,7 +136,7 @@
 									<div class="media-body">
 										<p class="mb-1">Total Bills</p>
 										<div class="d-flex flex-wrap">
-											<h2 class="fs-40 font-w600 text-white mb-0 mr-3">76</h2>
+											<h2 class="fs-40 font-w600 text-white mb-0 mr-3">0</h2>
 										</div>
 									</div>
 									<span class="border rounded-circle p-4">
@@ -184,7 +183,7 @@
 									<div class="media-body">
 										<p class="mb-1">Total Amount</p>
 										<div class="d-flex flex-wrap">
-											<h2 class="fs-40 font-w600 text-white mb-0 mr-3">56</h2>
+											<h2 class="fs-40 font-w600 text-white mb-0 mr-3">0</h2>
 										</div>
 									</div>
 									<span class="border rounded-circle p-4">
@@ -206,7 +205,7 @@
 									<div class="media-body">
 										<p class="mb-1">Other Data</p>
 										<div class="d-flex flex-wrap">
-											<h2 class="fs-40 font-w600 text-white mb-0 mr-3">76</h2>
+											<h2 class="fs-40 font-w600 text-white mb-0 mr-3">0</h2>
 										</div>
 									</div>
 									<span class="border rounded-circle p-4">
@@ -228,7 +227,7 @@
 									<div class="media-body">
 										<p class="mb-1">Other Data</p>
 										<div class="d-flex flex-wrap">
-											<h2 class="fs-40 font-w600 text-white mb-0 mr-3">783k</h2>
+											<h2 class="fs-40 font-w600 text-white mb-0 mr-3">0</h2>
 										</div>
 									</div>
 									<span class="border rounded-circle p-4">
@@ -273,6 +272,7 @@
         Scripts
     ***********************************-->
 	<!-- <script src="index.js" type="module"></script> -->
+	<script type="module" src="dist/bundle.js"></script>
 	<script src="public/vendor/global/global.min.js" type="text/javascript"></script>
 	<script src="public/vendor/bootstrap-select/dist/js/bootstrap-select.min.js" type="text/javascript"></script>
 	<script src="public/vendor/chart.js/Chart.bundle.min.js" type="text/javascript"></script>
@@ -281,41 +281,5 @@
 	<script src="public/js/dashboard/dashboard-1.js" type="text/javascript"></script>
 	<script src="public/js/custom.min.js" type="text/javascript"></script>
 	<script src="public/js/deznav-init.js" type="text/javascript"></script>
-
-	<script>
-		// Upload Button Functionality
-		function uploadButton() {
-		document.getElementById('imageInput').click();
-		}
-
-		const form = document.getElementById('imageUploadForm');
-		const fileInput = document.getElementById('imageInput');
-
-		form.addEventListener('submit', (event) => {
-		event.preventDefault();
-		console.log('Submitting form');
-		const file = fileInput.files[0];
-		
-		const formData = new FormData();
-		formData.append('file', file);
-		
-		fetch('http://43.205.216.220:4200/inventoryUpload', {
-			method: 'POST',
-			body: formData
-		})
-		.then(response => {
-			if (response.ok) {
-			return response.json();
-			}
-			throw new Error('Failed to upload file');
-		})
-		.then(data => {
-			console.log('File was uploaded successfully', data);
-		})
-		.catch(error => {
-			console.error(error);
-		});
-		});
-	</script>
 </body>
 </html>

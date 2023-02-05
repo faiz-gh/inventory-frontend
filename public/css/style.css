@@ -72,7 +72,7 @@
 @import url(../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
 @import url(../vendor/metismenu/css/metisMenu.min.css);
 
-#imageInput {
+#image-file {
   display: none;
 }
 
@@ -9576,7 +9576,7 @@ a {
   transition: all .2s ease;
   z-index: 5; }
   .nav-header .logo-abbr {
-    max-width: 45px; }
+    max-width: 90px; }
     @media only screen and (max-width: 575px) {
       .nav-header .logo-abbr {
         max-width: 35px; } }
@@ -9608,7 +9608,7 @@ a {
         justify-content: center; } }
   .nav-header .brand-title {
     margin-left: 20px;
-    max-width: 120px;
+    max-width: 80px;
     margin-top: 5px; }
     [data-theme-version="dark"] .nav-header .brand-title {
       background-position: 0 120%; }
@@ -9713,7 +9713,7 @@ a {
 [data-sidebar-style="compact"][data-layout="vertical"] .nav-header .brand-title {
   display: none; }
 [data-sidebar-style="compact"][data-layout="vertical"] .nav-header .logo-compact {
-  max-width: 75px; }
+  max-width: 90px; }
 
 [data-sidebar-style="compact"][data-layout="horizontal"] .nav-header .brand-logo {
   padding-left: 30px;
