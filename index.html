@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Eres | Dashboard</title>
+	<title>Monke | Dashboard</title>
 
 	<meta name="description" content="Some description for the page" />
 	<!-- Favicon icon -->
@@ -14,8 +14,6 @@
 	<link href="../../../cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet" type="text/css" />
 	<link href="public/vendor/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
 	<link href="public/css/style.css" rel="stylesheet" type="text/css" />
-
-	<script src="./index.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -118,7 +116,13 @@
 						<p class="mb-0 fs-18">Inventory Management Application</p>
 					</div>
 
-					<button type="button" class="btn btn-rounded btn-success">
+					<div class="input-group search-area ml-auto d-inline-flex">
+						<form id="imageUploadForm">
+							<input id="imageInput" type="file" accept=".jpg,.jpeg,.png,.pdf" onchange="form.submit()"/>
+						</form>
+					</div>
+
+					<button type="button" class="btn btn-rounded btn-success" onclick="uploadButton()">
 						<span class="btn-icon-left text-success">
 							<i class="fa fa-upload color-success"></i>
 						</span>Upload
@@ -253,8 +257,7 @@
 
 		<div class="footer">
 			<div class="copyright">
-				<p>Copyright © Designed &amp; Developed by <a href="http://dexignzone.com/"
-						target="_blank">DexignZone</a> 2020</p>
+				<p>Copyright © Designed &amp; Developed by Mon-ke Technologies</p>
 			</div>
 		</div>
 		<!--**********************************
@@ -268,6 +271,7 @@
 	<!--**********************************
         Scripts
     ***********************************-->
+	<script src="index.js" type="text/javascript"></script>
 	<script src="public/vendor/global/global.min.js" type="text/javascript"></script>
 	<script src="public/vendor/bootstrap-select/dist/js/bootstrap-select.min.js" type="text/javascript"></script>
 	<script src="public/vendor/chart.js/Chart.bundle.min.js" type="text/javascript"></script>
