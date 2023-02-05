@@ -1,4 +1,4 @@
-const firebase = require('firebase/app'); // Importing the Firebase App
+import { initializeApp } from 'firebase'; // Importing the Firebase App
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -11,7 +11,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 // Upload Button Functionality
 function uploadButton() {
