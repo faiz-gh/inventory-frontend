@@ -118,7 +118,7 @@
 
 					<div class="input-group search-area ml-auto d-inline-flex">
 						<form method="post" action="http://43.205.216.220:4200/inventoryUpload" id="image-form" enctype="multipart/form-data">
-							<input id="image-file" name="bill" type="file" accept=".jpg,.jpeg,.png,.pdf" onchange="form.submit()"/>
+							<input id="image-file" name="bill" type="file" accept=".jpg,.jpeg,.png,.pdf" onchange="form.submit(); e.preventDefault();"/>
 						</form>
 					</div>
 
