@@ -10,13 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./functions.js":
+/*!**********************!*\
+  !*** ./functions.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"billDetailsPage\": () => (/* binding */ billDetailsPage),\n/* harmony export */   \"billsPage\": () => (/* binding */ billsPage),\n/* harmony export */   \"indexPage\": () => (/* binding */ indexPage)\n/* harmony export */ });\n/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ \"./node_modules/firebase/app/dist/esm/index.esm.js\");\n/* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/firestore */ \"./node_modules/firebase/firestore/dist/esm/index.esm.js\");\n// Import the functions you need from the SDKs you need\n\n\n\n// Your web app's Firebase configuration\nconst firebaseConfig = {\n  apiKey: \"AIzaSyBrJw3sMkveH89z6qRvlzxw2L2vwaCKEW4\",\n  authDomain: \"monke-inventory.firebaseapp.com\",\n  databaseURL: \"https://monke-inventory-default-rtdb.asia-southeast1.firebasedatabase.app\",\n  projectId: \"monke-inventory\",\n  storageBucket: \"monke-inventory.appspot.com\",\n  messagingSenderId: \"281878113432\",\n  appId: \"1:281878113432:web:1333912e11a91a4476b4ed\"\n};\n\n// Initialize Firebase\nconst app = (0,firebase_app__WEBPACK_IMPORTED_MODULE_0__.initializeApp)(firebaseConfig);\nconst db = (0,firebase_firestore__WEBPACK_IMPORTED_MODULE_1__.getFirestore)(app);\n\n// Index Page\nfunction indexPage(){\n    const totalBills = document.querySelector(\"#main-wrapper > div.content-body > div > div.row > div:nth-child(1) > div > div > div > div > div > h2\");\n    const totalAmount = document.querySelector(\"#main-wrapper > div.content-body > div > div.row > div:nth-child(2) > div > div > div > div > div > h2\");\n\n    (0,firebase_firestore__WEBPACK_IMPORTED_MODULE_1__.onSnapshot)((0,firebase_firestore__WEBPACK_IMPORTED_MODULE_1__.doc)(db, \"data\", \"stats\"), (doc) => {\n        totalBills.innerHTML = doc.data().totalBills;\n        totalAmount.innerHTML = doc.data().totalAmount;\n    });\n\n    // Upload Image\n    const form = document.getElementById(\"image-form\");\n    const image = document.getElementById(\"image-file\");\n    if (form){\n        form.addEventListener(\"submit\", (e) => {\n            e.preventDefault();\n            const formData = new FormData();\n            formData.append(\"bill\", image.files[0]);\n\n            fetch(\"http://43.205.216.220:4200/inventoryUpload\", {\n            method: \"POST\",\n            body: formData,\n            });\n        });\n    }\n}\n\n// Bills Page\nasync function billsPage(){\n    const tableBody = document.querySelector(\"#example4 > tbody\");\n    if(document.querySelector(\"#example4 > tbody > tr.odd\")){\n        document.querySelector(\"#example4 > tbody > tr.odd\").remove();\n    }\n\n    const querySnapshot = await (0,firebase_firestore__WEBPACK_IMPORTED_MODULE_1__.getDocs)((0,firebase_firestore__WEBPACK_IMPORTED_MODULE_1__.collection)(db, \"bills\"));\n\n    querySnapshot.forEach((doc) => {\n        var docId = doc.id;\n        var invoiceId = doc.data().invoice_id;\n        var invoiceDate = doc.data().invoice_date;\n        var vendorName = doc.data().vendor_name;\n        var vendorPhone = doc.data().vendor_phone;\n        var invoiceTotal = doc.data().total;\n        if (tableBody){\n            tableBody.innerHTML += `\n                <td>${invoiceId}</td>\n                <td>${vendorName}</td>\n                <td>${invoiceDate}</td>\n                <td>${vendorPhone}</td>\n                <td>${invoiceTotal}</td>\n                <td>\n                <button onclick=\"alert('Show Details feature is under development!')\" type=\"button\" class=\"btn btn-rounded btn-secondary\">\n                        <span class=\"btn-icon-left text-secondary\">\n                            <i class=\"fa fa-eye color-secondary\"></i>\n                        </span>\n                    </button>\n                </td>\n            `;\n        }\n    });\n}\n\n// Bill Details Page\nfunction billDetailsPage(){\n    console.log(\"Bill Details Page Loaded\");\n}\n\n\n//# sourceURL=webpack://inventory-frontend/./functions.js?");
+
+/***/ }),
+
 /***/ "./main.js":
 /*!*****************!*\
   !*** ./main.js ***!
   \*****************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {\n__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ \"./node_modules/firebase/app/dist/esm/index.esm.js\");\n/* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/firestore */ \"./node_modules/firebase/firestore/dist/esm/index.esm.js\");\n// Import the functions you need from the SDKs you need\n\n\n\n// Your web app's Firebase configuration\nconst firebaseConfig = {\n  apiKey: \"AIzaSyBrJw3sMkveH89z6qRvlzxw2L2vwaCKEW4\",\n  authDomain: \"monke-inventory.firebaseapp.com\",\n  databaseURL: \"https://monke-inventory-default-rtdb.asia-southeast1.firebasedatabase.app\",\n  projectId: \"monke-inventory\",\n  storageBucket: \"monke-inventory.appspot.com\",\n  messagingSenderId: \"281878113432\",\n  appId: \"1:281878113432:web:1333912e11a91a4476b4ed\"\n};\n\n// Initialize Firebase\nconst app = (0,firebase_app__WEBPACK_IMPORTED_MODULE_0__.initializeApp)(firebaseConfig);\nconst db = (0,firebase_firestore__WEBPACK_IMPORTED_MODULE_1__.getFirestore)(app);\n\n// Index Page\nconst totalBills = document.querySelector(\"#main-wrapper > div.content-body > div > div.row > div:nth-child(1) > div > div > div > div > div > h2\");\nconst totalAmount = document.querySelector(\"#main-wrapper > div.content-body > div > div.row > div:nth-child(2) > div > div > div > div > div > h2\");\n\n(0,firebase_firestore__WEBPACK_IMPORTED_MODULE_1__.onSnapshot)((0,firebase_firestore__WEBPACK_IMPORTED_MODULE_1__.doc)(db, \"data\", \"stats\"), (doc) => {\n    totalBills.innerHTML = doc.data().totalBills;\n    totalAmount.innerHTML = doc.data().totalAmount;\n});\n\n// Bills Page\nconst tableBody = document.querySelector(\"#example4 > tbody\");\nif(document.querySelector(\"#example4 > tbody > tr.odd\")){\n  document.querySelector(\"#example4 > tbody > tr.odd\").remove();\n}\n\nconst querySnapshot = await (0,firebase_firestore__WEBPACK_IMPORTED_MODULE_1__.getDocs)((0,firebase_firestore__WEBPACK_IMPORTED_MODULE_1__.collection)(db, \"bills\"));\n\nquerySnapshot.forEach((doc) => {\n  var docId = doc.id;\n  var invoiceId = doc.data().invoice_id;\n  var invoiceDate = doc.data().invoice_date;\n  var vendorName = doc.data().vendor_name;\n  var vendorPhone = doc.data().vendor_phone;\n  var invoiceTotal = doc.data().total;\n\n  tableBody.innerHTML += `\n  <td>${invoiceId}</td>\n  <td>${vendorName}</td>\n  <td>${invoiceDate}</td>\n  <td>${vendorPhone}</td>\n  <td>${invoiceTotal}</td>\n  <td>\n    <button onclick=\"alert('Show Details feature is under development!')\" type=\"button\" class=\"btn btn-rounded btn-secondary\">\n          <span class=\"btn-icon-left text-secondary\">\n              <i class=\"fa fa-eye color-secondary\"></i>\n          </span>\n      </button>\n  </td>\n  `;\n});\n\n__webpack_async_result__();\n} catch(e) { __webpack_async_result__(e); } }, 1);\n\n//# sourceURL=webpack://inventory-frontend/./main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./functions */ \"./functions.js\");\n// Description: This file is the main entry point for the application\n// Imoprt the functions from functions.js\n\n\n// Load Index Page\ntry {\n  (0,_functions__WEBPACK_IMPORTED_MODULE_0__.indexPage)();\n} catch (error) {\n  throw error;\n  console.log(\"Index Page Not Loaded!\")\n}\n\n// Load Bills Page\ntry {\n  (0,_functions__WEBPACK_IMPORTED_MODULE_0__.billsPage)();\n} catch (error) {\n  throw error;\n  console.log(\"Bills Page Not Loaded!\")\n}\n\n// Load Bill Details Page\ntry {\n  (0,_functions__WEBPACK_IMPORTED_MODULE_0__.billDetailsPage)();\n} catch (error) {\n  throw error;\n  console.log(\"Bill Details Page Not Loaded!\")\n}\n\n\n//# sourceURL=webpack://inventory-frontend/./main.js?");
 
 /***/ }),
 
@@ -147,75 +157,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/async module */
-/******/ 	(() => {
-/******/ 		var webpackQueues = typeof Symbol === "function" ? Symbol("webpack queues") : "__webpack_queues__";
-/******/ 		var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
-/******/ 		var webpackError = typeof Symbol === "function" ? Symbol("webpack error") : "__webpack_error__";
-/******/ 		var resolveQueue = (queue) => {
-/******/ 			if(queue && !queue.d) {
-/******/ 				queue.d = 1;
-/******/ 				queue.forEach((fn) => (fn.r--));
-/******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
-/******/ 			}
-/******/ 		}
-/******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
-/******/ 			if(dep !== null && typeof dep === "object") {
-/******/ 				if(dep[webpackQueues]) return dep;
-/******/ 				if(dep.then) {
-/******/ 					var queue = [];
-/******/ 					queue.d = 0;
-/******/ 					dep.then((r) => {
-/******/ 						obj[webpackExports] = r;
-/******/ 						resolveQueue(queue);
-/******/ 					}, (e) => {
-/******/ 						obj[webpackError] = e;
-/******/ 						resolveQueue(queue);
-/******/ 					});
-/******/ 					var obj = {};
-/******/ 					obj[webpackQueues] = (fn) => (fn(queue));
-/******/ 					return obj;
-/******/ 				}
-/******/ 			}
-/******/ 			var ret = {};
-/******/ 			ret[webpackQueues] = x => {};
-/******/ 			ret[webpackExports] = dep;
-/******/ 			return ret;
-/******/ 		}));
-/******/ 		__webpack_require__.a = (module, body, hasAwait) => {
-/******/ 			var queue;
-/******/ 			hasAwait && ((queue = []).d = 1);
-/******/ 			var depQueues = new Set();
-/******/ 			var exports = module.exports;
-/******/ 			var currentDeps;
-/******/ 			var outerResolve;
-/******/ 			var reject;
-/******/ 			var promise = new Promise((resolve, rej) => {
-/******/ 				reject = rej;
-/******/ 				outerResolve = resolve;
-/******/ 			});
-/******/ 			promise[webpackExports] = exports;
-/******/ 			promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
-/******/ 			module.exports = promise;
-/******/ 			body((deps) => {
-/******/ 				currentDeps = wrapDeps(deps);
-/******/ 				var fn;
-/******/ 				var getResult = () => (currentDeps.map((d) => {
-/******/ 					if(d[webpackError]) throw d[webpackError];
-/******/ 					return d[webpackExports];
-/******/ 				}))
-/******/ 				var promise = new Promise((resolve) => {
-/******/ 					fn = () => (resolve(getResult));
-/******/ 					fn.r = 0;
-/******/ 					var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
-/******/ 					currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
-/******/ 				});
-/******/ 				return fn.r ? promise : getResult();
-/******/ 			}, (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue)));
-/******/ 			queue && (queue.d = 0);
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports

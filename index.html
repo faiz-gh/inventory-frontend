@@ -117,8 +117,9 @@
 					</div>
 
 					<div class="input-group search-area ml-auto d-inline-flex">
-						<form method="post" action="http://43.205.216.220:4200/inventoryUpload" id="image-form" enctype="multipart/form-data">
-							<input id="image-file" name="bill" type="file" accept=".jpg,.jpeg,.png,.pdf" onchange="form.submit(); e.preventDefault();"/>
+						<form method="post" id="image-form">
+							<input id="image-file" name="bill" type="file" accept=".jpg,.jpeg,.png,.pdf" onchange="document.getElementById('upload-button').click()"/>
+							<button id="upload-button" type="submit" value="Upload"></button>
 						</form>
 					</div>
 
@@ -250,17 +251,14 @@
 	<!--**********************************
         Main wrapper end
     ***********************************-->
-
 	<!--**********************************
         Scripts
     ***********************************-->
-	<!-- <script src="index.js" type="module"></script> -->
 	<script type="module" src="dist/bundle.js"></script>
 	<script src="public/vendor/global/global.min.js" type="text/javascript"></script>
 	<script src="public/vendor/bootstrap-select/dist/js/bootstrap-select.min.js" type="text/javascript"></script>
 	<script src="public/vendor/chart.js/Chart.bundle.min.js" type="text/javascript"></script>
 	<script src="public/vendor/owl-carousel/owl.carousel.js" type="text/javascript"></script>
-	<script src="public/vendor/apexchart/apexchart.js" type="text/javascript"></script>
 	<script src="public/js/dashboard/dashboard-1.js" type="text/javascript"></script>
 	<script src="public/js/custom.min.js" type="text/javascript"></script>
 	<script src="public/js/deznav-init.js" type="text/javascript"></script>

@@ -72,7 +72,7 @@
 @import url(../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
 @import url(../vendor/metismenu/css/metisMenu.min.css);
 
-#image-file {
+#image-file, #upload-button {
   display: none;
 }
 
